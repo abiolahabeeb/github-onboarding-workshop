@@ -1,4 +1,4 @@
-# My Notes — Oyimafu Joshua Emmanuel
+# My Notes — Oroma Unife
 
 
 ---
@@ -7,9 +7,11 @@
 
 <!-- Write the main ideas covered in today's session -->
 
-- How to create git
-- how to create GitHub profile
--
+- Class Management
+- how to create Github
+- how to collaborate on github
+- how to fork a repository
+- i did the home work
 
 ---
 
@@ -17,14 +19,17 @@
 
 <!-- Describe what you did in the lab. Include steps, commands, or screenshots descriptions -->
 
-### i created my GitHub account
+### What I did
+I created my github account
+i downloaded the class files
 
+### What happened / Result
 
-### It worked
+I was successful
 
+### Challenges I faced
 
-### Nothing
-
+I did not fork the repository, i tried to upload and it failed with an error
 
 ---
 
@@ -32,6 +37,7 @@
 
 <!-- What was most valuable to you personally from this session? -->
 
+I leanrt how to set up github repository
 
 ---
 
@@ -39,7 +45,7 @@
 
 <!-- Anything you want to follow up on or ask the mentor -->
 
--
+- AM having issue understanding the process
 -
 
 ---
@@ -52,4 +58,4 @@
 
 ---
 
-*Submitted by: Oyimafu Joshua Emmanuel · Oyimafu*
+*Submitted by: Oroma unobe · Oroma*

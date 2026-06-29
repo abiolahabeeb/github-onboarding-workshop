@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MNSUG Cloud & AI Security Bootcamp 2026</title>
+  <style>
+    :root {
+      --bg:        #07091a;
+      --surface:   #0f1232;
+      --card:      #131640;
+      --border:    #2a2f6e;
+      --accent1:   #7c3aed;
+      --accent2:   #06b6d4;
+      --accent3:   #f59e0b;
+      --text:      #e2e8f0;
+      --muted:     #94a3b8;
+      --green:     #22c55e;
+      --radius:    12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #0d0f2b 0%, #1a0a3e 50%, #0a1f3d 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .logo-row img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid var(--accent1);
+      object-fit: cover;
+    }
+    .logo-text {
+      text-align: left;
+    }
+    .logo-text .org { font-size: 0.75rem; color: var(--accent2); text-transform: uppercase; letter-spacing: 2px; }
+    .logo-text .name { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 800;
+      background: linear-gradient(90deg, #fff 0%, var(--accent2) 50%, var(--accent1) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 28px;
+    }
+
+    /* ── QUICK-ACTION BUTTONS ── */
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-primary   { background: var(--accent1); color: #fff; }
+    .btn-secondary { background: var(--accent2); color: #07091a; }
+    .btn-outline   { background: transparent; color: var(--accent2); border: 1px solid var(--accent2); }
+    .btn-gold      { background: var(--accent3); color: #07091a; }
+
+    /* ── STATS BAR ── */
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      justify-content: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      padding: 0;
+    }
+    .stat {
+      flex: 1;
+      min-width: 120px;
+      padding: 16px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-val { font-size: 1.5rem; font-weight: 800; color: var(--accent2); }
+    .stat-lbl { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── MAIN LAYOUT ── */
+    main { max-width: 1200px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    section { margin-bottom: 56px; }
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    thead tr { background: linear-gradient(90deg, var(--accent1), #4f2b9e); }
+    thead th {
+      padding: 14px 16px;
+      text-align: left;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+    }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(124,58,237,0.08); }
+    tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+    tbody tr:nth-child(even):hover { background: rgba(124,58,237,0.08); }
+    td { padding: 13px 16px; vertical-align: middle; }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .badge-num   { background: var(--accent1); color: #fff; }
+    .badge-done  { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid var(--green); }
+    .badge-next  { background: rgba(245,158,11,0.15); color: var(--accent3); border: 1px solid var(--accent3); }
+    .badge-upcoming { background: rgba(148,163,184,0.1); color: var(--muted); border: 1px solid var(--border); }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 2px 2px;
+      transition: opacity 0.15s;
+    }
+    .link-pill:hover { opacity: 0.8; }
+    .pill-learn  { background: rgba(6,182,212,0.15);  color: var(--accent2);  border: 1px solid rgba(6,182,212,0.3); }
+    .pill-folder { background: rgba(124,58,237,0.15); color: #a78bfa;         border: 1px solid rgba(124,58,237,0.3); }
+    .pill-teams  { background: rgba(99,102,241,0.15); color: #818cf8;         border: 1px solid rgba(99,102,241,0.3); }
+    .pill-attend { background: rgba(34,197,94,0.12);  color: var(--green);    border: 1px solid rgba(34,197,94,0.3); }
+
+    .mentor-name { color: var(--text); font-weight: 600; font-size: 0.82rem; }
+    .mod-name    { color: var(--muted); font-size: 0.78rem; }
+
+    /* ── SUBMISSIONS CARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    .session-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .session-card:hover { border-color: var(--accent1); }
+    .card-header {
+      padding: 14px 18px;
+      background: linear-gradient(90deg, rgba(124,58,237,0.3), rgba(6,182,212,0.1));
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .card-title { font-weight: 700; font-size: 0.9rem; color: var(--text); }
+    .card-date  { font-size: 0.75rem; color: var(--muted); }
+    .card-body  { padding: 14px 18px; }
+    .submission-count {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .submission-count span { color: var(--green); font-weight: 700; }
+    .file-list { list-style: none; }
+    .file-list li {
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.8rem;
+      color: var(--accent2);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .file-list li:last-child { border-bottom: none; }
+    .file-list .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+    .empty-msg { font-size: 0.8rem; color: var(--muted); font-style: italic; }
+
+    /* ── HOW TO SECTION ── */
+    .steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    .step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .step-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--accent1);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 12px;
+    }
+    .step h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .step p  { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── COMMUNITY ── */
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .community-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      transition: border-color 0.2s, transform 0.15s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .community-card:hover { border-color: var(--accent1); transform: translateY(-2px); }
+    .community-icon { font-size: 2rem; }
+    .community-name { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+    .community-handle { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: var(--surface);
+    }
+    footer a { color: var(--accent2); text-decoration: none; }
+
+
+    /* ── LIGHT MODE ── */
+    body.light {
+      --bg:      #f5f3ff;
+      --surface: #ede9fe;
+      --card:    #ffffff;
+      --border:  #c4b5fd;
+      --text:    #1e1b4b;
+      --muted:   #6d28d9;
+      --green:   #16a34a;
+    }
+    body.light header {
+      background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 40%, #0e7490 100%);
+    }
+    body.light header::before {
+      background: radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.35) 0%, transparent 70%);
+    }
+    body.light .stats {
+      background: linear-gradient(90deg, #ede9fe, #dbeafe);
+    }
+    body.light .stat-val { color: #7c3aed; }
+    body.light .stat-lbl { color: #5b21b6; }
+    body.light .stat     { border-right-color: #c4b5fd; }
+    body.light .section-title { color: #7c3aed; border-bottom-color: #c4b5fd; }
+    body.light .table-wrap { border-color: #c4b5fd; }
+    body.light thead tr { background: linear-gradient(90deg, #7c3aed, #0891b2); }
+    body.light tbody tr { border-bottom-color: #ddd6fe; }
+    body.light tbody tr:hover { background: rgba(124,58,237,0.07); }
+    body.light tbody tr:nth-child(even) { background: rgba(109,40,217,0.04); }
+    body.light tbody tr:nth-child(even):hover { background: rgba(124,58,237,0.07); }
+    body.light .session-card { background: #fff; border-color: #c4b5fd; box-shadow: 0 2px 8px rgba(124,58,237,0.08); }
+    body.light .session-card:hover { border-color: #7c3aed; box-shadow: 0 4px 16px rgba(124,58,237,0.18); }
+    body.light .card-header { background: linear-gradient(90deg, rgba(124,58,237,0.12), rgba(6,182,212,0.07)); border-bottom-color: #ddd6fe; }
+    body.light .card-title { color: #3b0764; }
+    body.light .card-date  { color: #7c3aed; }
+    body.light .step { background: #fff; border-color: #c4b5fd; box-shadow: 0 2px 8px rgba(124,58,237,0.07); }
+    body.light .community-card { background: #fff; border-color: #c4b5fd; box-shadow: 0 2px 8px rgba(124,58,237,0.07); }
+    body.light .community-card:hover { border-color: #7c3aed; box-shadow: 0 4px 16px rgba(124,58,237,0.18); }
+    body.light .community-name { color: #3b0764; }
+    body.light .community-handle { color: #6d28d9; }
+    body.light .subtitle { color: rgba(255,255,255,0.9) !important; }
+    body.light .logo-text .org { color: #a5f3fc !important; }
+    body.light .logo-text .name { color: #ffffff !important; }
+    body.light .mentor-name { color: #1e1b4b; }
+    body.light .mod-name    { color: #6d28d9; }
+    body.light .pill-learn  { background: rgba(8,145,178,0.12); color: #0e7490; border-color: rgba(8,145,178,0.35); }
+    body.light .pill-folder { background: rgba(124,58,237,0.12); color: #6d28d9; border-color: rgba(124,58,237,0.35); }
+    body.light .pill-teams  { background: rgba(67,56,202,0.12); color: #4338ca; border-color: rgba(67,56,202,0.35); }
+    body.light .pill-attend { background: rgba(22,163,74,0.1);  color: #15803d; border-color: rgba(22,163,74,0.35); }
+    body.light .badge-upcoming { background: rgba(109,40,217,0.1); color: #6d28d9; border-color: #c4b5fd; }
+    body.light .file-list li { color: #7c3aed; border-bottom-color: rgba(0,0,0,0.05); }
+    body.light .empty-msg { color: #a78bfa; }
+    body.light footer { background: #ede9fe; border-top-color: #c4b5fd; color: #5b21b6; }
+    body.light footer a { color: #7c3aed; }
+    body.light #theme-toggle { background: #fff; border-color: #c4b5fd; color: #3b0764; box-shadow: 0 2px 8px rgba(124,58,237,0.15); }
+
+    /* ── TOGGLE BUTTON ── */
+    #theme-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 999;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    #theme-toggle:hover { border-color: var(--accent1); }
+
+    @media (max-width: 640px) {
+      .stat { min-width: 50%; }
+      .actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<button id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">
+  <span id="theme-icon">☀️</span>
+  <span id="theme-label">Light Mode</span>
+</button>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header>
+  <div class="logo-row">
+    <img src="./assets/mnsug-logo.jpg" alt="MNSUG Logo" />
+    <div class="logo-text">
+      <div class="org">Microsoft Naija Security Group</div>
+      <div class="name">MNSUG</div>
+    </div>
+  </div>
+  <h1>Cloud &amp; AI Security Bootcamp 2026</h1>
+  <p class="subtitle">Free 6-Month SC-500 Mentorship Program &nbsp;·&nbsp; Every Saturday &nbsp;·&nbsp; Virtual</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/fork" target="_blank">
+      ⑂ Fork the Repo
+    </a>
+    <a class="btn btn-secondary" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">
+      📹 Join Teams Meeting
+    </a>
+    <a class="btn btn-gold" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">
+      ✅ Submit Attendance
+    </a>
+    <a class="btn btn-outline" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop" target="_blank">
+      📂 View Repo
+    </a>
+  </div>
+</header>
+
+<!-- ══════════════ STATS ══════════════ -->
+<div class="stats">
+  <div class="stat"><div class="stat-val">650+</div><div class="stat-lbl">Registered</div></div>
+  <div class="stat"><div class="stat-val">26</div><div class="stat-lbl">Sessions</div></div>
+  <div class="stat"><div class="stat-val">6</div><div class="stat-lbl">Months</div></div>
+  <div class="stat"><div class="stat-val">Free</div><div class="stat-lbl">Cost</div></div>
+  <div class="stat"><div class="stat-val">SC-500</div><div class="stat-lbl">Certification</div></div>
+</div>
+
+<!-- ══════════════ MAIN ══════════════ -->
+<main>
+
+  <!-- SESSION SCHEDULE -->
+  <section id="schedule">
+    <div class="section-title">📅 Session Schedule</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Topic</th>
+            <th>Mentor</th>
+            <th>Moderator</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td><span class="badge badge-num">00</span></td>
+            <td>27 Jun 2026</td>
+            <td>Pre-Bootcamp &amp; Onboarding</td>
+            <td><span class="mentor-name">Emmanuel Itoje<br>Oyimafu Emmanuel</span></td>
+            <td><span class="mod-name">Chidimma Ugwu</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/sc-900-describe-concepts-of-security-compliance-identity/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-00-2026-06-27-pre-bootcamp-onboarding" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-next">01</span></td>
+            <td>4 Jul 2026</td>
+            <td>Secure Access via Microsoft Entra</td>
+            <td><span class="mentor-name">Emmanuel Itoje<br>Uchechukwu Azunna</span></td>
+            <td><span class="mod-name">Amos Adereti</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/secure-access-resources-entra/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-01-2026-07-04-microsoft-entra" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">02</span></td>
+            <td>11 Jul 2026</td>
+            <td>Azure Key Vault Defense in Depth</td>
+            <td><span class="mentor-name">Oluwatosin Ajala</span></td>
+            <td><span class="mod-name">Susan Onyekachi-Lawal</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/configure-key-vault-security/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-02-2026-07-11-azure-key-vault" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">03</span></td>
+            <td>18 Jul 2026</td>
+            <td>Security Governance &amp; Compliance Pt1</td>
+            <td><span class="mentor-name">Oluwatosin Ajala</span></td>
+            <td><span class="mod-name">Susan Onyekachi-Lawal</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/describe-capabilities-microsoft-compliance/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-03-2026-07-18-governance-compliance-pt1" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">04</span></td>
+            <td>25 Jul 2026</td>
+            <td>Security Governance &amp; Compliance Pt2</td>
+            <td><span class="mentor-name">Oluwatosin Ajala</span></td>
+            <td><span class="mod-name">Amos Adereti</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/describe-capabilities-microsoft-compliance/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-04-2026-07-25-governance-compliance-pt2" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">05</span></td>
+            <td>1 Aug 2026</td>
+            <td>Azure Storage Security</td>
+            <td><span class="mentor-name">Oyimafu Emmanuel</span></td>
+            <td><span class="mod-name">Remilekun Olakunle</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/implement-azure-storage-security/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-05-2026-08-01-azure-storage-security" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">06</span></td>
+            <td>8 Aug 2026</td>
+            <td>Azure SQL Database Security</td>
+            <td><span class="mentor-name">Gabriel Mekuleyi</span></td>
+            <td><span class="mod-name">Remilekun Olakunle</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/implement-sql-database-security/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-06-2026-08-08-azure-sql-security" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">07</span></td>
+            <td>15 Aug 2026</td>
+            <td>Network Security Controls Pt1</td>
+            <td><span class="mentor-name">Chukwuemeka Dumebi</span></td>
+            <td><span class="mod-name">Amos Adereti</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/implement-network-security/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-07-2026-08-15-network-security-pt1" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">08</span></td>
+            <td>22 Aug 2026</td>
+            <td>Network Security Controls Pt2</td>
+            <td><span class="mentor-name">Chukwuemeka Dumebi</span></td>
+            <td><span class="mod-name">Remilekun Olakunle</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/implement-network-security/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-08-2026-08-22-network-security-pt2" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">09</span></td>
+            <td>29 Aug 2026</td>
+            <td>AI Security Pt1 (Mod 1–3)</td>
+            <td><span class="mentor-name">Emmanuel Itoje</span></td>
+            <td><span class="mod-name">Remilekun Olakunle</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/secure-ai-workloads-azure/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-09-2026-08-29-ai-security-pt1" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">10</span></td>
+            <td>5 Sep 2026</td>
+            <td>AI Security Pt2 (Mod 4–6)</td>
+            <td><span class="mentor-name">Susan Onyekachi-Lawal</span></td>
+            <td><span class="mod-name">Amos Adereti</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/secure-ai-workloads-azure/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-10-2026-09-05-ai-security-pt2" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">11</span></td>
+            <td>12 Sep 2026</td>
+            <td>AI Security Pt3 (Mod 7–9)</td>
+            <td><span class="mentor-name">Faruq Damilola Bakare</span></td>
+            <td><span class="mod-name">Remilekun Olakunle</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/secure-ai-workloads-azure/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-11-2026-09-12-ai-security-pt3" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">12</span></td>
+            <td>19 Sep 2026</td>
+            <td>Server &amp; VM Security Pt1</td>
+            <td><span class="mentor-name">Imoh Etuk</span></td>
+            <td><span class="mod-name">Chidimma Ugwu</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/implement-host-security/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-12-2026-09-19-server-vm-security-pt1" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">13</span></td>
+            <td>26 Sep 2026</td>
+            <td>Server &amp; VM Security Pt2</td>
+            <td><span class="mentor-name">Imoh Etuk</span></td>
+            <td><span class="mod-name">Amos Adereti</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/implement-host-security/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-13-2026-09-26-server-vm-security-pt2" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">14</span></td>
+            <td>3 Oct 2026</td>
+            <td>Server &amp; VM Security Pt3</td>
+            <td><span class="mentor-name">Imoh Etuk</span></td>
+            <td><span class="mod-name">Chidimma Ugwu</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/implement-host-security/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-14-2026-10-03-server-vm-security-pt3" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">15</span></td>
+            <td>10 Oct 2026</td>
+            <td>App Platform Security Pt1</td>
+            <td><span class="mentor-name">Oyimafu Emmanuel</span></td>
+            <td><span class="mod-name">Chidiebere Ihejirika</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/implement-app-security/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-15-2026-10-10-app-platform-security-pt1" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">16</span></td>
+            <td>17 Oct 2026</td>
+            <td>App Platform Security Pt2</td>
+            <td><span class="mentor-name">Chidimma Ugwu</span></td>
+            <td><span class="mod-name">Chidiebere Ihejirika</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/implement-app-security/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-16-2026-10-17-app-platform-security-pt2" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">17</span></td>
+            <td>24 Oct 2026</td>
+            <td>App Platform Security Pt3</td>
+            <td><span class="mentor-name">Chidimma Ugwu</span></td>
+            <td><span class="mod-name">Chidiebere Ihejirika</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/implement-app-security/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-17-2026-10-24-app-platform-security-pt3" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">18</span></td>
+            <td>31 Oct 2026</td>
+            <td>Defender for Cloud Pt1</td>
+            <td><span class="mentor-name">Oluwafemi Akinfenwa</span></td>
+            <td><span class="mod-name">Chidimma Ugwu</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/sc-200-secure-azure-services-workloads-microsoft-defender-cloud/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-18-2026-10-31-defender-for-cloud-pt1" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">19</span></td>
+            <td>7 Nov 2026</td>
+            <td>Defender for Cloud Pt2</td>
+            <td><span class="mentor-name">Oluwafemi Akinfenwa</span></td>
+            <td><span class="mod-name">Amos Adereti</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/sc-200-secure-azure-services-workloads-microsoft-defender-cloud/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-19-2026-11-07-defender-for-cloud-pt2" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">20</span></td>
+            <td>14 Nov 2026</td>
+            <td>Defender for Cloud Pt3</td>
+            <td><span class="mentor-name">Oluwafemi Akinfenwa</span></td>
+            <td><span class="mod-name">Temitope Olorunju</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/sc-200-secure-azure-services-workloads-microsoft-defender-cloud/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-20-2026-11-14-defender-for-cloud-pt3" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">21</span></td>
+            <td>21 Nov 2026</td>
+            <td>Microsoft Sentinel Pt1</td>
+            <td><span class="mentor-name">Musbau Olagunju</span></td>
+            <td><span class="mod-name">Chidimma Ugwu</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/sc-200-connect-microsoft-sentinel-environments/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-21-2026-11-21-sentinel-pt1" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">22</span></td>
+            <td>28 Nov 2026</td>
+            <td>Microsoft Sentinel Pt2</td>
+            <td><span class="mentor-name">Musbau Olagunju</span></td>
+            <td><span class="mod-name">Susan Onyekachi-Lawal</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/sc-200-connect-microsoft-sentinel-environments/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-22-2026-11-28-sentinel-pt2" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">23</span></td>
+            <td>5 Dec 2026</td>
+            <td>Microsoft Sentinel Pt3</td>
+            <td><span class="mentor-name">Musbau Olagunju</span></td>
+            <td><span class="mod-name">Amos Adereti</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/sc-200-connect-microsoft-sentinel-environments/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-23-2026-12-05-sentinel-pt3" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">24</span></td>
+            <td>12 Dec 2026</td>
+            <td>Deploy &amp; Operate Microsoft Security Copilot</td>
+            <td><span class="mentor-name">Doyinsola Balogun</span></td>
+            <td><span class="mod-name">Chidimma Ugwu</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/training/paths/security-copilot-and-ai/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-24-2026-12-12-security-copilot" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td><span class="badge badge-upcoming">25</span></td>
+            <td>19 Dec 2026</td>
+            <td>AMA — Cloud Security &amp; Career Mentorship</td>
+            <td><span class="mentor-name">MNSUG Mentor Team</span></td>
+            <td><span class="mod-name">TBD</span></td>
+            <td>
+              <a class="link-pill pill-learn" href="https://learn.microsoft.com/en-us/certifications/exams/sc-500/" target="_blank">📘 Learn</a>
+              <a class="link-pill pill-folder" href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/tree/main/classes/session-25-2026-12-19-ama-career-mentorship" target="_blank">📁 Folder</a>
+              <a class="link-pill pill-teams" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">📹 Teams</a>
+              <a class="link-pill pill-attend" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">✅ Attendance</a>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SUBMISSIONS TRACKER -->
+  <section id="submissions">
+    <div class="section-title">📝 Assignment Submissions</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+      <p style="color:var(--muted);font-size:0.875rem;margin:0;">
+        Submissions load live from GitHub. Each card updates when a Pull Request is merged.
+        Files should be named <code style="background:var(--card);padding:2px 6px;border-radius:4px;color:var(--accent2);">topic-firstname-lastname.md</code>
+      </p>
+      <button onclick="refreshSubmissions()" id="refresh-btn" style="
+        background:var(--accent1);color:#fff;border:none;border-radius:8px;
+        padding:8px 18px;font-size:0.82rem;font-weight:700;cursor:pointer;
+        display:flex;align-items:center;gap:6px;transition:opacity 0.2s;">
+        🔄 Refresh
+      </button>
+    </div>
+    <div class="cards-grid" id="submissions-grid">
+      <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-size:0.9rem;">
+        Loading submissions from GitHub...
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY LINKS -->
+  <section id="community">
+    <div class="section-title">🌍 Join the Community</div>
+    <p style="color:var(--muted);font-size:0.875rem;margin-bottom:20px;">
+      Stay connected, watch session recordings, and support the community by following MNSUG on all platforms.
+    </p>
+    <div class="community-grid">
+
+      <a class="community-card" href="https://www.meetup.com/microsoft-naija-security-user-group/" target="_blank">
+        <div class="community-icon">📅</div>
+        <div class="community-name">Meetup</div>
+        <div class="community-handle">Join as a member</div>
+      </a>
+
+      <a class="community-card" href="https://www.youtube.com/watch?v=gLGoNLD_6Ms&list=PLa-LpBaTz1E9aeXW-vgAzwZDOq3viw3CC" target="_blank">
+        <div class="community-icon">📺</div>
+        <div class="community-name">YouTube</div>
+        <div class="community-handle">Bootcamp Playlist</div>
+      </a>
+
+      <a class="community-card" href="https://youtube.com/@naijamicrosoftsecuritygroup" target="_blank">
+        <div class="community-icon">🎬</div>
+        <div class="community-name">YouTube Channel</div>
+        <div class="community-handle">@naijamicrosoftsecuritygroup</div>
+      </a>
+
+      <a class="community-card" href="https://www.linkedin.com/company/microsoft-naija-security-user-group/" target="_blank">
+        <div class="community-icon">💼</div>
+        <div class="community-name">LinkedIn</div>
+        <div class="community-handle">Microsoft Naija Security User Group</div>
+      </a>
+
+      <a class="community-card" href="https://www.instagram.com/microsoftsecurity_usergroup" target="_blank">
+        <div class="community-icon">📸</div>
+        <div class="community-name">Instagram</div>
+        <div class="community-handle">@microsoftsecurity_usergroup</div>
+      </a>
+
+      <a class="community-card" href="https://x.com/naijamicrosoft" target="_blank">
+        <div class="community-icon">🐦</div>
+        <div class="community-name">X (Twitter)</div>
+        <div class="community-handle">@naijamicrosoft</div>
+      </a>
+
+      <a class="community-card" href="https://teams.microsoft.com/meet/21010924982360?p=JkzVsucVZesq5zDYt5" target="_blank">
+        <div class="community-icon">📹</div>
+        <div class="community-name">Teams Meeting</div>
+        <div class="community-handle">Join every Saturday</div>
+      </a>
+
+      <a class="community-card" href="https://forms.cloud.microsoft/r/JTwp82vA4L" target="_blank">
+        <div class="community-icon">✅</div>
+        <div class="community-name">Attendance Form</div>
+        <div class="community-handle">Submit after each session</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- HOW TO SUBMIT -->
+  <section id="how-to">
+    <div class="section-title">🚀 How to Submit Your Notes</div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Fork the Repo</h3>
+        <p>Click <strong>Fork the Repo</strong> at the top of this page to copy it to your own GitHub account.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Open the Session Folder</h3>
+        <p>Go to <code>classes/</code> and click the folder for the session you attended.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Download the Template</h3>
+        <p>Click the template file, then click <strong>Raw</strong>, then right-click and choose <em>Save As</em>.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Rename the File</h3>
+        <p>Replace <code>yourname</code> with your real name, e.g. <code>microsoft-entra-oyimafu-emmanuel.md</code></p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <h3>Fill in Your Notes</h3>
+        <p>Open in Notepad, VS Code, or any text editor and fill in what you learned.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <h3>Upload &amp; Pull Request</h3>
+        <p>Upload to the session folder on your fork, then open a <strong>Pull Request</strong>. We review before merging.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <p>Microsoft Naija Security Group · SC-500 Mentorship Program 2026 · <a href="https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop" target="_blank">GitHub Repo</a> · <a href="https://learn.microsoft.com/en-us/certifications/exams/sc-500/" target="_blank">SC-500 Exam</a></p>
+  <p style="margin-top:8px;">Organised by <strong>Emmanuel Itoje</strong> · <strong>Oyimafu Emmanuel</strong> · <strong>Chidimma Ugwu</strong> · <strong>Amos Adereti</strong></p>
+</footer>
+
+
+<script>
+  function toggleTheme() {
+    const body = document.body;
+    const icon = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    if (body.classList.contains('light')) {
+      body.classList.remove('light');
+      icon.textContent = '☀️';
+      label.textContent = 'Light Mode';
+      localStorage.setItem('mnsug-theme', 'dark');
+    } else {
+      body.classList.add('light');
+      icon.textContent = '🌙';
+      label.textContent = 'Dark Mode';
+      localStorage.setItem('mnsug-theme', 'light');
+    }
+  }
+
+  // Restore preference on load
+  (function() {
+    const saved = localStorage.getItem('mnsug-theme');
+    if (saved === 'light') {
+      document.body.classList.add('light');
+      document.addEventListener('DOMContentLoaded', function() {
+        const icon = document.getElementById('theme-icon');
+        const label = document.getElementById('theme-label');
+        if (icon) icon.textContent = '🌙';
+        if (label) label.textContent = 'Dark Mode';
+      });
+    }
+  })();
+</script>
+
+<script>
+// ── DYNAMIC SUBMISSIONS LOADER ──────────────────────────────────────────────
+const REPO   = 'Microsoft-Naija-Security-Usergroup/github-onboarding-workshop';
+const BRANCH = 'main';
+const API    = 'https://api.github.com/repos/' + REPO + '/contents/classes/';
+
+const SESSIONS = [
+  { num:'00', folder:'session-00-2026-06-27-pre-bootcamp-onboarding',   title:'Pre-Bootcamp Onboarding',          date:'27 Jun 2026', status:'done' },
+  { num:'01', folder:'session-01-2026-07-04-microsoft-entra',            title:'Microsoft Entra',                  date:'4 Jul 2026',  status:'next' },
+  { num:'02', folder:'session-02-2026-07-11-azure-key-vault',            title:'Azure Key Vault',                  date:'11 Jul 2026', status:'upcoming' },
+  { num:'03', folder:'session-03-2026-07-18-governance-compliance-pt1',  title:'Governance & Compliance Pt1',      date:'18 Jul 2026', status:'upcoming' },
+  { num:'04', folder:'session-04-2026-07-25-governance-compliance-pt2',  title:'Governance & Compliance Pt2',      date:'25 Jul 2026', status:'upcoming' },
+  { num:'05', folder:'session-05-2026-08-01-azure-storage-security',     title:'Azure Storage Security',           date:'1 Aug 2026',  status:'upcoming' },
+  { num:'06', folder:'session-06-2026-08-08-azure-sql-security',         title:'Azure SQL Security',               date:'8 Aug 2026',  status:'upcoming' },
+  { num:'07', folder:'session-07-2026-08-15-network-security-pt1',       title:'Network Security Pt1',             date:'15 Aug 2026', status:'upcoming' },
+  { num:'08', folder:'session-08-2026-08-22-network-security-pt2',       title:'Network Security Pt2',             date:'22 Aug 2026', status:'upcoming' },
+  { num:'09', folder:'session-09-2026-08-29-ai-security-pt1',            title:'AI Security Pt1',                  date:'29 Aug 2026', status:'upcoming' },
+  { num:'10', folder:'session-10-2026-09-05-ai-security-pt2',            title:'AI Security Pt2',                  date:'5 Sep 2026',  status:'upcoming' },
+  { num:'11', folder:'session-11-2026-09-12-ai-security-pt3',            title:'AI Security Pt3',                  date:'12 Sep 2026', status:'upcoming' },
+  { num:'12', folder:'session-12-2026-09-19-server-vm-security-pt1',     title:'Server & VM Security Pt1',         date:'19 Sep 2026', status:'upcoming' },
+  { num:'13', folder:'session-13-2026-09-26-server-vm-security-pt2',     title:'Server & VM Security Pt2',         date:'26 Sep 2026', status:'upcoming' },
+  { num:'14', folder:'session-14-2026-10-03-server-vm-security-pt3',     title:'Server & VM Security Pt3',         date:'3 Oct 2026',  status:'upcoming' },
+  { num:'15', folder:'session-15-2026-10-10-app-platform-security-pt1',  title:'App Platform Security Pt1',        date:'10 Oct 2026', status:'upcoming' },
+  { num:'16', folder:'session-16-2026-10-17-app-platform-security-pt2',  title:'App Platform Security Pt2',        date:'17 Oct 2026', status:'upcoming' },
+  { num:'17', folder:'session-17-2026-10-24-app-platform-security-pt3',  title:'App Platform Security Pt3',        date:'24 Oct 2026', status:'upcoming' },
+  { num:'18', folder:'session-18-2026-10-31-defender-for-cloud-pt1',     title:'Defender for Cloud Pt1',           date:'31 Oct 2026', status:'upcoming' },
+  { num:'19', folder:'session-19-2026-11-07-defender-for-cloud-pt2',     title:'Defender for Cloud Pt2',           date:'7 Nov 2026',  status:'upcoming' },
+  { num:'20', folder:'session-20-2026-11-14-defender-for-cloud-pt3',     title:'Defender for Cloud Pt3',           date:'14 Nov 2026', status:'upcoming' },
+  { num:'21', folder:'session-21-2026-11-21-sentinel-pt1',               title:'Microsoft Sentinel Pt1',           date:'21 Nov 2026', status:'upcoming' },
+  { num:'22', folder:'session-22-2026-11-28-sentinel-pt2',               title:'Microsoft Sentinel Pt2',           date:'28 Nov 2026', status:'upcoming' },
+  { num:'23', folder:'session-23-2026-12-05-sentinel-pt3',               title:'Microsoft Sentinel Pt3',           date:'5 Dec 2026',  status:'upcoming' },
+  { num:'24', folder:'session-24-2026-12-12-security-copilot',           title:'Security Copilot',                 date:'12 Dec 2026', status:'upcoming' },
+  { num:'25', folder:'session-25-2026-12-19-ama-career-mentorship',      title:'AMA & Career Mentorship',          date:'19 Dec 2026', status:'upcoming' },
+];
+
+function badgeHTML(status) {
+  if (status === 'done')     return '<span class="badge badge-done">Done</span>';
+  if (status === 'next')     return '<span class="badge badge-next">Next</span>';
+  return '<span class="badge badge-upcoming">Upcoming</span>';
+}
+
+function cleanName(filename, folderName) {
+  // Remove .md extension if present
+  let name = filename.replace(/\.md$/i, '');
+
+  // The folder name gives us the topic slug to strip, e.g.
+  // "session-00-2026-06-27-pre-bootcamp-onboarding"
+  // → topic slug is everything after the date: "pre-bootcamp-onboarding"
+  // We strip that prefix from the filename to get the mentee name.
+  const datePart = folderName.match(/\d{4}-\d{2}-\d{2}-(.+)$/);
+  if (datePart) {
+    const topicSlug = datePart[1]; // e.g. "pre-bootcamp-onboarding"
+    const prefix = topicSlug + '-';
+    if (name.toLowerCase().startsWith(prefix.toLowerCase())) {
+      name = name.slice(prefix.length);
+    }
+  }
+
+  // Remove trailing "-template" if mentee left it in their filename
+  name = name.replace(/-?template$/i, '');
+
+  // Replace hyphens, underscores with spaces and trim
+  name = name.replace(/[-_]/g, ' ').trim();
+
+  // Title-case each word
+  name = name.replace(/\w\S*/g, w => w.charAt(0).toUpperCase() + w.slice(1));
+
+  return name || filename; // fallback to raw filename if parsing fails
+}
+
+async function loadSession(session) {
+  try {
+    // Cache-bust via timestamp in URL — no custom headers to avoid CORS preflight
+    const url = API + session.folder + '?ref=' + BRANCH + '&_=' + Date.now();
+    const res = await fetch(url, {
+      headers: { 'Accept': 'application/vnd.github.v3+json' },
+      cache: 'no-store'
+    });
+    if (!res.ok) throw new Error('fetch failed');
+    const files = await res.json();
+
+    // Keep all files except: README.md, the blank yourname-template, and folders
+    const submissions = files.filter(f => {
+      if (f.type !== 'file') return false;
+      const n = f.name.toLowerCase();
+      // Skip the official blank template (yourname-template)
+      if (n === 'readme.md') return false;
+      if (n.includes('yourname-template')) return false;
+      // Everything else is a real submission (even if mentee left 'template' in their filename)
+      return true;
+    });
+
+    return { session, submissions };
+  } catch(e) {
+    console.error('Failed to load', session.folder, e);
+    return { session, submissions: [] };
+  }
+}
+
+function renderCard({ session, submissions }) {
+  const folderUrl = 'https://github.com/' + REPO + '/tree/' + BRANCH + '/classes/' + session.folder;
+  const count = submissions.length;
+
+  let filesHTML = '';
+  if (count === 0) {
+    filesHTML = '<li class="empty-msg">' +
+      (session.status === 'upcoming'
+        ? 'Upcoming — session on ' + session.date
+        : 'No submissions yet — be the first!') +
+      '</li>';
+  } else {
+    filesHTML = submissions.map(f => {
+      const displayName = cleanName(f.name, session.folder);
+      const fileUrl = 'https://github.com/' + REPO + '/blob/' + BRANCH + '/classes/' + session.folder + '/' + f.name;
+      return '<li><span class="dot"></span><a href="' + fileUrl + '" target="_blank" style="color:inherit;text-decoration:none;">' + displayName + '</a></li>';
+    }).join('');
+  }
+
+  return `
+    <div class="session-card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">Session ${session.num} — ${session.title}</div>
+          <div class="card-date">${session.date}</div>
+        </div>
+        ${badgeHTML(session.status)}
+      </div>
+      <div class="card-body">
+        <div class="submission-count">
+          Submissions: <span>${count}</span>
+          ${count > 0 ? '&nbsp;<a href="' + folderUrl + '" target="_blank" style="font-size:0.75rem;color:var(--accent2);">view all on GitHub →</a>' : ''}
+        </div>
+        <ul class="file-list">${filesHTML}</ul>
+      </div>
+    </div>`;
+}
+
+async function loadAllSubmissions() {
+  const grid = document.getElementById('submissions-grid');
+  if (!grid) return;
+  grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);font-size:0.9rem;">Loading submissions from GitHub...</div>';
+
+  // Load all sessions in parallel — no caching
+  const results = await Promise.all(SESSIONS.map(loadSession));
+  grid.innerHTML = results.map(renderCard).join('');
+}
+
+function refreshSubmissions() {
+  const btn = document.getElementById('refresh-btn');
+  if (btn) { btn.textContent = '⏳ Refreshing...'; btn.disabled = true; }
+  loadAllSubmissions().then(() => {
+    if (btn) { btn.innerHTML = '🔄 Refresh'; btn.disabled = false; }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadAllSubmissions();
+  // Auto-refresh every 5 minutes so counts stay in sync automatically
+  setInterval(loadAllSubmissions, 5 * 60 * 1000);
+});
+</script>
+
+</body>
+</html>
