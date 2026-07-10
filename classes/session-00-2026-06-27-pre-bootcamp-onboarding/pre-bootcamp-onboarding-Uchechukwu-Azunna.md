@@ -6,6 +6,7 @@
 - I learned how to create a github account
 - How to create a repository and upload files
 - How to fork a repository
+- How to create a pull request
 -
 -
 ## Lab / Hands-On Work
