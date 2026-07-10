@@ -1,4 +1,4 @@
-# My Notes — Abdulazeez Yinusa 
+# My Notes — Racheal Ezenwa Oyinyechi 
 
 ---
 
@@ -25,26 +25,27 @@
 ### Challenges I faced
 
 * I had issues with creating fork and also uploading the file to the correct repository
---
+
 
 ## My Takeaways
 
+* had issues downloading the file 
 * Always review my work before submitting, especially ensuring that descriptions and other required details are included.
 
 ---
 
 ## Questions I Still Have
 
-No
+how to upload my pictures in my github account 
 
 ---
 
 ## Resources I Found Useful
 
-The class was very useful, I practiced while the class was on 
+The class was very useful, I practiced after  the class was on 
 
 
 
 ---
 
-*Submitted by: Abdulazeez Ademola Yinusa Ademolay*
+*Submitted by: Racheal Ezenwa Oyinyechi 

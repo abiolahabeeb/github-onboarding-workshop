@@ -1,45 +1,45 @@
-# My Notes — [Oluharaotu Alexander Onyekachi 
-
+# My Notes — [Edache Ada Precious]
 
 ---
 
 ## Key Concepts I Learned
 
-create my first GitHub account 
 
--
+- I learned that GitHub is a platform for hosting and managing code using Git
+- I learned how to stores projects
+- How commits save cahnges
+- How branches allows separate development 
 -
 -
 
 ---
 
 ## Lab / Hands-On Work
+I created a Github account and set up my profile 
+Created a repo 
+Made commits with meaningful commit messages 
+Pushed local changes to github 
 
-created my first GitHub account 
-I fork the repo to enable me add my work
-downloaded the file to onboard 
 
 ### What I did
-assignment submission 
-
-
+I created account on github using my goggle account rather than filling the form directly.I also created a repository for private use only.
 
 ### What happened / Result
-successful work submission 
-
+The account is activated and I submitted my assignment.I also created a repository on the page
 
 
 ### Challenges I faced
-difficulty in navigating around but persistence lead me through.
 
-
+I struggled to get my assignment submitted 
+i had it done, saved and even verified but it still wasn't on the list 
 ---
 
 ## My Takeaways
 
 
-kept trying until I got it right
-
+Through they training I now understand how to create and manage repositories, track changes with commits.
+The hands on work increased my confidence in using GitHub and I gained practical skills 
+I now understand collaboration when working on a project 
 
 ---
 
@@ -47,7 +47,7 @@ kept trying until I got it right
 
 <!-- Anything you want to follow up on or ask the mentor -->
 
--
+-What is the application of github to Ai and cloud security?
 -
 
 ---
@@ -55,9 +55,9 @@ kept trying until I got it right
 ## Resources I Found Useful
 
 <!-- Any links, docs, or Microsoft Learn modules you found helpful -->
-
+BOOTCAMP NAIJA AI and CLOUD SECURITY GITHUB.
 -
-
+https://github.com/Microsoft-Naija-Security-Usergroup/github-onboarding-workshop/edit/main/classes/session-00-2026-06-27-pre-bootcamp-onboarding/pre-bootcamp-onboarding-yourname-template.md
 ---
 
-*Submitted by: [Oluharaotu Alexander] · [stalexoluh]*
+*Submitted by: [TIMOTHY ABRAHAM ] · [TIMOTHY ABRAHAM ]*
