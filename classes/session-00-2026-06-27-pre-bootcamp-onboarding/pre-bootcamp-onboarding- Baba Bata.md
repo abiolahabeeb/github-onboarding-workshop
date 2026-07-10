@@ -1,4 +1,4 @@
-# My Notes — \[BABA BATA]
+# My Notes — \[Olajide samson]
 
 
 
@@ -74,5 +74,5 @@ believe you can do it.
 
 \---
 
-*Submitted by: Baba Bata · bbdibal*
+*Submitted by: olajide samson*
 
