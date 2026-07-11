@@ -1,4 +1,4 @@
-# My Notes — Ikechukwu Ezeonu
+# My Notes — EDACHE ADA PRECIOUS 
 
 
 ## Key Concepts I Learned
@@ -7,13 +7,13 @@
 
 - Secure Access to Resources using Microsoft Entra for PIM management
 - Integrating API Plugins with Secured APIs in Microsoft 365 Copilot
--
+-Pim enables ennables you to manage,control and monitor access to important resources in your organization 
 
 ---
 
 ## Lab / Hands-On Work
 
-I followed the hands-on demo of the instructor on how PIM is configured. 
+I squrely followed the hands-on demo of the instructor on how PIM is configured. 
 
 
 ### What I did
@@ -43,7 +43,7 @@ The practice account is yet to be provided
 
 <!-- Anything you want to follow up on or ask the mentor -->
 
--
+-I have questions on how to manage and work with the practice account 
 -
 
 ---
@@ -56,4 +56,4 @@ The practice account is yet to be provided
 
 ---
 
-*Submitted by: Ikechukwu Ezeonu · Ikechukwu-Ezeonu*
+*Submitted by: EDACHE ADA PRECIOUS*
