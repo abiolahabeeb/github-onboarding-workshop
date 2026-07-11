@@ -1,4 +1,4 @@
-# My Notes — [REPLACE WITH YOUR FULL NAME]
+# My Notes — [OLAJIDE SAMSON]
 
 > **How to use this file:**
 > 1. **Download** this file to your computer — click the **Raw** button on GitHub, then right-click and *Save As*, OR click the download icon at the top-right of the file view
@@ -13,7 +13,10 @@
 
 <!-- Write the main ideas covered in today's session -->
 
--
+-It allows you to build an AI-powered assistant that understands natural language.
+It allows you to build on top of the infrastructure of Microsoft 365 Copilot.
+It allows you to use instructions to optimize the assistant to your scenario.
+It allows you to connect the assistant to the repairs management system so that it can answer authoritatively.
 -
 -
 
@@ -54,7 +57,7 @@
 
 <!-- Any links, docs, or Microsoft Learn modules you found helpful -->
 
--
+-API KEYS
 
 ---
 

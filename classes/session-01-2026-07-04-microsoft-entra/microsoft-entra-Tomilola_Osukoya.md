@@ -1,4 +1,4 @@
-# My Notes — [Tomilola Osukoya]
+# My Notes — [olajide samson]
 
 ## Key Concepts I Learned
 
@@ -57,4 +57,4 @@
 
 ---
 Microsoft Learn modules on Microsoft Entra IDa
-*Submitted by: [Tomilola Osukoya] · [Tomilola]*
+*Submitted by: [olajide samson] · [olajide]*
